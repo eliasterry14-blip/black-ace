@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Black Ace">
+<meta name="theme-color" content="#000000">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Black Ace</title>
+<link rel="stylesheet" href="stil.css">
+</head>
+<body>
+<div id="app" class="bg-schwarz">
+
+  <!-- Hauptmenü (mit Start-Animation) -->
+  <section id="v-menue" class="ansicht an intro">
+    <canvas id="staub"></canvas>
+    <div class="kegel" id="kegel"></div>
+    <div class="faecher" id="faecher"></div>
+    <div class="logo" id="logo"></div>
+    <div class="lade" id="lade"><i></i></div>
+    <div class="menue-inhalt">
+      <div class="karteBox kapital"><span>Dein Kapital</span><strong class="goldtext" id="m-kapital"></strong><small id="m-ort"></small></div>
+      <button class="knopf haupt" id="m-cash">Cash Games</button>
+      <div class="drei">
+        <button class="kachel" data-ziel="v-liste"><span data-i="pokal"></span>Bestenliste</button>
+        <button class="kachel" data-ziel="v-stat"><span data-i="balken"></span>Statistik</button>
+        <button class="kachel" data-ziel="v-einst"><span data-i="zahnrad"></span>Einstellungen</button>
+      </div>
+      <div class="karteBox liste" id="m-liste"></div>
+    </div>
+  </section>
+
+  <!-- Orte -->
+  <section id="v-orte" class="ansicht">
+    <div class="kopf"><button class="rund zurueck" data-i="zurueck"></button><h1>Cash Games</h1><span class="geld" id="o-geld"></span></div>
+    <div class="orte" id="o-liste"></div>
+    <div class="schleier" id="o-schleier"></div>
+    <div class="blatt" id="o-blatt">
+      <div class="griff"></div>
+      <h4 id="b-name"></h4>
+      <div class="betrag goldtext" id="b-betrag"></div>
+      <input type="range" class="regler" id="b-regler">
+      <div class="grenzen"><span id="b-min"></span><span id="b-max"></span></div>
+      <button class="knopf haupt" id="b-los">Platz nehmen</button>
+    </div>
+  </section>
+
+  <!-- Tisch -->
+  <section id="v-tisch" class="ansicht">
+    <div class="tischkopf">
+      <button class="rund" id="t-gehen" data-i="tuer"></button>
+      <div class="t-ort"><b id="t-name"></b><span id="t-blinds"></span></div>
+      <span class="geld" id="t-stack"></span>
+    </div>
+    <div class="tisch" id="t-tisch"><div class="filz"></div></div>
+    <div class="mitte" id="t-mitte">
+      <div class="pot" id="t-pot"><span class="chip"></span><b></b></div>
+      <div class="board" id="t-board"></div>
+    </div>
+    <div id="t-sitze"></div>
+    <div class="hand" id="t-hand"></div>
+    <div class="leiste" id="t-leiste">
+      <div class="schnell" id="t-schnell">
+        <button data-s="min">Min</button><button data-s="halb">½ Pot</button><button data-s="pot">Pot</button><button data-s="allin">All in</button>
+      </div>
+      <input type="range" class="regler" id="t-regler">
+      <div class="knoepfe">
+        <button class="k" id="t-check">Schieben<small>&nbsp;</small></button>
+        <button class="k mit" id="t-call">Mitgehen<small></small></button>
+        <button class="k hoch" id="t-raise">Erhöhen<small></small></button>
+      </div>
+    </div>
+    <div class="schleier" id="t-schleier"></div>
+    <div class="blatt" id="t-blatt">
+      <div class="griff"></div>
+      <h4>Neu einkaufen</h4>
+      <div class="betrag goldtext" id="r-betrag"></div>
+      <input type="range" class="regler" id="r-regler">
+      <div class="grenzen"><span id="r-min"></span><span id="r-max"></span></div>
+      <div class="zwei"><button class="knopf zweit" id="r-weg">Aufstehen</button><button class="knopf haupt" id="r-los">Einkaufen</button></div>
+    </div>
+  </section>
+
+  <!-- Einstellungen -->
+  <section id="v-einst" class="ansicht scroll">
+    <div class="kopf"><button class="rund zurueck" data-i="zurueck"></button><h1>Einstellungen</h1><span></span></div>
+    <div class="karteBox">
+      <div class="profil">
+        <label class="bigav" id="e-av"><input type="file" accept="image/*" id="e-foto" hidden><span class="stift" data-i="stift"></span></label>
+        <div class="profiltext"><input id="e-name" maxlength="16" spellcheck="false"><small id="e-stufe"></small></div>
+      </div>
+      <div class="avwahl" id="e-avwahl"></div>
+    </div>
+    <div class="abschnitt">Karten</div><div class="wahl" id="e-karten"></div>
+    <div class="abschnitt">Rückseite</div><div class="wahl" id="e-ruecken"></div>
+    <div class="abschnitt">Tisch</div><div class="wahl" id="e-tisch"></div>
+    <div class="abschnitt">Hintergrund</div><div class="wahl" id="e-bg"></div>
+    <div class="abschnitt">Akzentfarbe</div><div class="farben" id="e-akzent"></div>
+    <div class="abschnitt">Ton</div>
+    <button class="schalter" id="e-ton"><i></i></button>
+  </section>
+
+  <!-- Bestenliste -->
+  <section id="v-liste" class="ansicht scroll">
+    <div class="kopf"><button class="rund zurueck" data-i="zurueck"></button><h1>Bestenliste</h1><span></span></div>
+    <div class="karteBox liste" id="l-liste"></div>
+  </section>
+
+  <!-- Statistik -->
+  <section id="v-stat" class="ansicht scroll">
+    <div class="kopf"><button class="rund zurueck" data-i="zurueck"></button><h1>Statistik</h1><span></span></div>
+    <div class="stat" id="s-werte"></div>
+  </section>
+
+  <!-- Pleite -->
+  <div class="pleite" id="pleite">
+    <div class="pleite-text">PLEITE</div>
+    <div class="goldtext pleite-geld">5.000 €</div>
+    <button class="knopf haupt" id="p-neu">Neu anfangen</button>
+  </div>
+  <div class="meldung" id="meldung"></div>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="silber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/><stop offset=".3" stop-color="#8e8e95"/><stop offset=".52" stop-color="#ececef"/>
+      <stop offset=".78" stop-color="#45454b"/><stop offset="1" stop-color="#bdbdc3"/>
+    </linearGradient>
+    <filter id="gehaemmert" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.085" numOctaves="2" seed="7" result="rausch"/>
+      <feDiffuseLighting in="rausch" surfaceScale="2.4" lighting-color="#ffffff" result="licht"><feDistantLight azimuth="235" elevation="50"/></feDiffuseLighting>
+      <feComposite in="licht" in2="SourceAlpha" operator="in" result="textur"/>
+      <feBlend in="SourceGraphic" in2="textur" mode="multiply"/>
+    </filter>
+  </defs>
+</svg>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
